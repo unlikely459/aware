@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+  </style>
+</head>
+<body>
+<p class="p1">1. Data encrypted=[7c7b4946b58c9baadcd64f3c7d35eebe]</p>
+<p class="p1">2. Data encrypted=[277f1a8662ed40bc65ca9f726c13a9e8]</p>
+<p class="p1">3. Data encrypted=[7a71964d8f390c4701c2a06b07940888]</p>
+<p class="p1">4. Data encrypted=[00989fe34b8fc3ae5639a643637e6224]</p>
+<p class="p1">5. Data encrypted=[b624c5b768d4e1e5591d4f4e20136f27]</p>
+<p class="p1">6. Data encrypted=[bcbef5744f84732557b76e25887855cd]</p>
+<p class="p1">7. Data encrypted=[6c2ee2f7af49590368310e2d84975f2e]</p>
+<p class="p1">8. Data encrypted=[855cdbd6e53fd8c26d1ddbf37e700596]</p>
+<p class="p1">9. Data encrypted=[15304c5188ebe3df9d6349441460aa96]</p>
+<p class="p1">10. Data encrypted=[69ec4203abcfae1c8f98b430e68c46e5]</p>
+<p class="p1">11. Data encrypted=[c278940d32520b4d492a2a91ebf38ba0]</p>
+<p class="p1">12. Data encrypted=[bcbef5744f84732557b76e25887855cd]</p>
+<p class="p2"><br></p>
+<p class="p3">const { createCipheriv, createDecipheriv } = require('crypto');</p>
+<p class="p4"><br></p>
+<p class="p3">const algorithm = 'aes-256-cbc';</p>
+<p class="p3">const key = '32';</p>
+<p class="p3">const iv = '16';</p>
+<p class="p4"><br></p>
+<p class="p3">const encrypt = (data) =&gt; {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const cipher = createCipheriv(algorithm, key, iv);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>let crypted = cipher.update(data, 'utf8', 'hex');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>crypted += cipher.final('hex');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>return crypted;</p>
+<p class="p3">};</p>
+<p class="p4"><br></p>
+<p class="p3">const decrypt = (data) =&gt; {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const decipher = createDecipheriv(algorithm, key, iv);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>let decrypted = decipher.update(data, 'hex', 'utf8');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>decrypted += decipher.final('utf8');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>return decrypted;</p>
+<p class="p3">};</p>
+<p class="p4"><br></p>
+<p class="p3">const data = '';</p>
+<p class="p3">const dataEncrypt = encrypt(data);</p>
+<p class="p4"><br></p>
+<p class="p3">console.log('Result: ' + decrypt('tutaj_hash'))</p>
+</body>
+</html>
